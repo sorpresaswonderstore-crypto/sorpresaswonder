@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: "SorpresasWonderStore — Bisutería & Accesorios Elegantes",
   description:
     "Descubre nuestra exclusiva colección de bisutería y accesorios modernos para dama y caballero. Calidad y elegancia en cada pieza.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
+    ],
+  },
   keywords: [
     "bisutería",
     "accesorios",

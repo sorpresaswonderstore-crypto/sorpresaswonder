@@ -9,7 +9,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* ── Palette ─────────────────────────────────────────── */
+  /* ── Light Palette ────────────────────────────────────── */
   --cream: #FCFAF7;
   --cream-dark: #F8F4EE;
   --white: #FFFFFF;
@@ -31,6 +31,25 @@
 
   --whatsapp: #25D366;
   --whatsapp-dark: #20BA5A;
+
+  /* ── Light-specific ──────────────────────────────────── */
+  --bg-body: var(--cream);
+  --bg-surface: var(--white);
+  --text-primary: var(--near-black);
+  --text-secondary: var(--charcoal);
+  --text-muted: var(--taupe);
+  --text-dim: var(--warm-gray);
+  --border-color: var(--champagne);
+  --border-subtle: rgba(212, 201, 188, 0.3);
+  --hero-bg: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 40%, var(--ivory) 100%);
+  --hero-radial: rgba(201, 168, 76, 0.06);
+  --skeleton-from: var(--cream-dark);
+  --skeleton-to: var(--champagne);
+  --navbar-bg: rgba(252, 250, 247, 0.85);
+  --admin-bg: var(--cream);
+  --admin-topbar-bg: rgba(255, 255, 255, 0.92);
+  --features-bg: var(--cream-dark);
+  --scrollbar-track: var(--cream);
 
   /* ── Typography ──────────────────────────────────────── */
   --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -59,6 +78,298 @@
 
   /* ── Spacing ─────────────────────────────────────────── */
   --section-py: 96px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DARK MODE
+   Warm · Luxurious · Easy on the Eyes
+   ══════════════════════════════════════════════════════════════ */
+
+html.dark {
+  --cream: #1A1815;
+  --cream-dark: #201E1A;
+  --white: #2C2823;
+  --ivory: #3D3832;
+  --champagne: #3D3832;
+  --beige: #5A5248;
+  --warm-gray: #8A8278;
+  --taupe: #B8ADA0;
+  --charcoal: #EDE4D8;
+  --near-black: #F5F0EB;
+
+  --gold: #D4AF37;
+  --gold-light: #E8D48B;
+  --gold-dark: #C9A84C;
+  --gold-glow: rgba(212, 175, 55, 0.2);
+
+  /* ── Dark-specific ───────────────────────────────────── */
+  --bg-body: #1A1815;
+  --bg-surface: #2C2823;
+  --text-primary: #F5F0EB;
+  --text-secondary: #EDE4D8;
+  --text-muted: #B8ADA0;
+  --text-dim: #8A8278;
+  --border-color: #3D3832;
+  --border-subtle: rgba(61, 56, 50, 0.6);
+  --hero-bg: linear-gradient(180deg, #1A1815 0%, #201E1A 40%, #2C2823 100%);
+  --hero-radial: rgba(212, 175, 55, 0.05);
+  --skeleton-from: #2C2823;
+  --skeleton-to: #3D3832;
+  --navbar-bg: rgba(26, 24, 21, 0.88);
+  --admin-bg: #1A1815;
+  --admin-topbar-bg: rgba(26, 24, 21, 0.92);
+  --features-bg: #201E1A;
+  --scrollbar-track: #1A1815;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.5), 0 8px 16px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 32px 64px rgba(0, 0, 0, 0.6), 0 12px 24px rgba(0, 0, 0, 0.4);
+
+  /* ── Toggle icon ─────────────────────────────────────── */
+  --theme-icon: '\2600'; /* sun */
+}
+
+html.dark .hero::before {
+  background: radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+}
+
+html.dark .navbar {
+  border-bottom-color: rgba(61, 56, 50, 0.5);
+}
+
+html.dark .navbar.scrolled {
+  border-bottom-color: rgba(61, 56, 50, 0.8);
+}
+
+html.dark .btn-secondary {
+  background: var(--ivory);
+  border-color: var(--champagne);
+  color: var(--text-primary);
+}
+
+html.dark .btn-secondary:hover {
+  background: var(--champagne);
+  border-color: var(--beige);
+}
+
+html.dark .btn-outline {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+html.dark .btn-outline:hover {
+  background: var(--text-primary);
+  color: var(--bg-body);
+}
+
+html.dark .product-card,
+html.dark .feature-card,
+html.dark .skeleton-card {
+  background: var(--bg-surface);
+  border-color: var(--border-color);
+}
+
+html.dark .product-card-image-wrap {
+  background: var(--cream-dark);
+}
+
+html.dark .product-card-divider {
+  background: var(--border-color);
+}
+
+html.dark .product-card-quick-view .btn {
+  background: rgba(44, 40, 35, 0.92) !important;
+  color: var(--text-primary);
+  border-color: var(--champagne);
+}
+
+html.dark .admin-login-card,
+html.dark .admin-panel {
+  background: var(--bg-surface);
+  border-color: var(--border-color);
+}
+
+html.dark .admin-page {
+  background: var(--admin-bg);
+}
+
+html.dark .admin-topbar {
+  background: var(--admin-topbar-bg);
+  border-bottom-color: var(--border-color);
+}
+
+html.dark .admin-panel-header {
+  border-bottom-color: var(--border-color);
+}
+
+html.dark .product-table td {
+  border-bottom-color: var(--cream-dark);
+  color: var(--text-secondary);
+}
+
+html.dark .product-table th {
+  border-bottom-color: var(--border-color);
+}
+
+html.dark .product-table tr:hover td {
+  background: var(--cream);
+}
+
+html.dark .modal-content {
+  background: var(--bg-surface);
+}
+
+html.dark .modal-header,
+html.dark .modal-footer {
+  border-color: var(--border-color);
+}
+
+html.dark .modal-title {
+  color: var(--text-primary);
+}
+
+html.dark .modal-close:hover {
+  color: var(--text-primary);
+  background: var(--ivory);
+}
+
+html.dark .form-input {
+  background: var(--cream);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+html.dark .form-input:focus {
+  border-color: var(--gold);
+}
+
+html.dark .form-label {
+  color: var(--text-primary);
+}
+
+html.dark .tab-btn {
+  color: var(--text-dim);
+}
+
+html.dark .tab-btn.active {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+html.dark .tabs {
+  background: var(--cream);
+}
+
+html.dark .upload-zone {
+  background: var(--cream);
+  border-color: var(--beige);
+}
+
+html.dark .upload-zone:hover {
+  border-color: var(--gold);
+  background: var(--ivory);
+}
+
+html.dark .logo-preview {
+  background: var(--cream);
+}
+
+html.dark .logo-preview img {
+  border-color: var(--border-color);
+}
+
+html.dark .toast {
+  background: var(--near-black);
+  color: var(--bg-body);
+}
+
+html.dark .whatsapp-fab-tooltip {
+  background: var(--near-black);
+  color: var(--bg-body);
+}
+
+html.dark .section-title {
+  color: var(--text-primary);
+}
+
+html.dark .section-subtitle {
+  color: var(--text-muted);
+}
+
+html.dark .hero-title {
+  color: var(--text-primary);
+}
+
+html.dark .hero-subtitle {
+  color: var(--text-muted);
+}
+
+html.dark .hero-scroll {
+  color: var(--text-dim);
+}
+
+html.dark .hero-scroll .mouse {
+  border-color: var(--beige);
+}
+
+html.dark .hero-scroll .mouse::after {
+  background: var(--beige);
+}
+
+html.dark .product-card-name {
+  color: var(--text-primary);
+}
+
+html.dark .product-card-price {
+  color: var(--text-primary);
+}
+
+html.dark .product-card-price .currency {
+  color: var(--text-muted);
+}
+
+html.dark .product-card-code {
+  color: var(--text-dim);
+}
+
+html.dark .product-card-desc {
+  color: var(--text-muted);
+}
+
+html.dark .empty-state h3 {
+  color: var(--text-primary);
+}
+
+html.dark .empty-state p {
+  color: var(--text-dim);
+}
+
+html.dark .feature-title {
+  color: var(--text-primary);
+}
+
+html.dark .feature-desc {
+  color: var(--text-muted);
+}
+
+html.dark ::selection {
+  background: var(--gold);
+  color: var(--cream);
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: var(--beige);
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--warm-gray);
 }
 
 html {
@@ -270,15 +581,15 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(252, 250, 247, 0.85);
+  background: var(--navbar-bg);
   backdrop-filter: saturate(180%) blur(24px);
   -webkit-backdrop-filter: saturate(180%) blur(24px);
-  border-bottom: 1px solid rgba(212, 201, 188, 0.3);
+  border-bottom: 1px solid var(--border-subtle);
   transition: border-color var(--transition);
 }
 
 .navbar.scrolled {
-  border-bottom-color: rgba(212, 201, 188, 0.5);
+  border-bottom-color: var(--border-color);
 }
 
 .navbar-inner {
@@ -766,6 +1077,56 @@ body {
 .btn-danger:hover { background: #C82333; }
 .btn-success { background: #28A745; color: var(--white); }
 .btn-success:hover { background: #218838; }
+
+/* ══════════════════════════════════════════════════════════════
+   THEME TOGGLE
+   ══════════════════════════════════════════════════════════════ */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: scale(1.08);
+  box-shadow: 0 0 16px var(--gold-glow);
+}
+
+.theme-toggle:active {
+  transform: scale(0.92);
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  line-height: 1;
+}
+
+html.dark .theme-toggle {
+  border-color: var(--champagne);
+  background: var(--ivory);
+}
+
+html.dark .theme-toggle:hover {
+  border-color: var(--gold);
+  background: var(--bg-surface);
+}
 
 /* ══════════════════════════════════════════════════════════════
    WHATSAPP FAB
@@ -1296,10 +1657,10 @@ body {
 }
 
 .admin-topbar {
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--admin-topbar-bg);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid var(--champagne);
+  border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   z-index: 100;
