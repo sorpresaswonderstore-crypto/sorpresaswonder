@@ -32,6 +32,9 @@
   --whatsapp: #25D366;
   --whatsapp-dark: #20BA5A;
 
+  /* ── Footer (always dark) ───────────────────────────── */
+  --footer-bg: #1A1815;
+
   /* ── Light-specific ──────────────────────────────────── */
   --bg-body: var(--cream);
   --bg-surface: var(--white);
@@ -349,6 +352,10 @@ html.dark .empty-state p {
 
 html.dark .feature-title {
   color: var(--text-primary);
+}
+
+html.dark .footer-logo {
+  color: #F5F0EB;
 }
 
 html.dark .feature-desc {
@@ -1263,7 +1270,7 @@ html.dark .theme-toggle:hover {
    ══════════════════════════════════════════════════════════════ */
 
 .footer {
-  background: var(--near-black);
+  background: var(--footer-bg);
   color: rgba(255, 255, 255, 0.6);
   padding: 64px 0 40px;
   margin-top: auto;
