@@ -536,102 +536,160 @@ function ProductsTable({
   }
 
   return (
-    <div style={{ overflowX: "auto" }}>
-      <table className="product-table">
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Producto</th>
-            <th>Código</th>
-            <th>Precio</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((p) => (
-            <tr key={p.id}>
-              <td>
-                <Image
-                  src={p.imageUrl}
-                  alt={p.name}
-                  width={48}
-                  height={48}
-                  className="product-table-image"
-                />
-              </td>
-              <td>
-                <div style={{ fontWeight: 600, marginBottom: 2 }}>{p.name}</div>
-                <div
-                  style={{
-                    fontSize: 12,
-                    color: "var(--gray)",
-                    maxWidth: 200,
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {p.description}
+    <>
+      {/* ── Desktop Table ── */}
+      <div className="product-table-desktop">
+        <div style={{ overflowX: "auto" }}>
+          <table className="product-table">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Producto</th>
+                <th>Código</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map((p) => (
+                <tr key={p.id}>
+                  <td>
+                    <Image
+                      src={p.imageUrl}
+                      alt={p.name}
+                      width={48}
+                      height={48}
+                      className="product-table-image"
+                    />
+                  </td>
+                  <td>
+                    <div style={{ fontWeight: 600, marginBottom: 2 }}>{p.name}</div>
+                    <div
+                      style={{
+                        fontSize: 12,
+                        color: "var(--warm-gray)",
+                        maxWidth: 200,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {p.description}
+                    </div>
+                  </td>
+                  <td>
+                    <code
+                      style={{
+                        fontSize: 12,
+                        background: "var(--cream)",
+                        padding: "2px 8px",
+                        borderRadius: 6,
+                        fontFamily: "monospace",
+                        color: "var(--taupe)",
+                      }}
+                    >
+                      {p.productCode}
+                    </code>
+                  </td>
+                  <td>
+                    <strong>${p.price.toFixed(2)}</strong>
+                  </td>
+                  <td>
+                    <span
+                      className={`badge ${p.published ? "badge-published" : "badge-draft"}`}
+                    >
+                      {p.published ? "● Publicado" : "○ Borrador"}
+                    </span>
+                  </td>
+                  <td>
+                    <div className="table-actions">
+                      <button
+                        className={`btn btn-sm ${p.published ? "btn-secondary" : "btn-success"}`}
+                        onClick={() => onToggle(p.id, p.published)}
+                        title={p.published ? "Ocultar del front" : "Publicar en el front"}
+                        style={{ gap: 4, padding: "6px 12px" }}
+                      >
+                        <IconEye off={p.published} />
+                        {p.published ? "Ocultar" : "Publicar"}
+                      </button>
+                      <button
+                        className="btn btn-sm btn-secondary"
+                        onClick={() => onEdit(p)}
+                        title="Editar producto"
+                        style={{ padding: "6px 10px" }}
+                      >
+                        <IconEdit />
+                      </button>
+                      <button
+                        className="btn btn-sm btn-danger"
+                        onClick={() => onDelete(p.id)}
+                        title="Eliminar producto"
+                        style={{ padding: "6px 10px" }}
+                      >
+                        <IconTrash />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* ── Mobile Cards ── */}
+      <div className="product-list-mobile">
+        {products.map((p) => (
+          <div key={p.id} className="product-mobile-card">
+            <div className="product-mobile-top">
+              <Image
+                src={p.imageUrl}
+                alt={p.name}
+                width={64}
+                height={64}
+                className="product-mobile-img"
+              />
+              <div className="product-mobile-info">
+                <div className="product-mobile-name">{p.name}</div>
+                <div className="product-mobile-desc">{p.description}</div>
+                <div className="product-mobile-meta">
+                  <span className="product-mobile-code">{p.productCode}</span>
+                  <span className="product-mobile-price">${p.price.toFixed(2)}</span>
+                  <span
+                    className={`badge ${p.published ? "badge-published" : "badge-draft"}`}
+                  >
+                    {p.published ? "● Publicado" : "○ Borrador"}
+                  </span>
                 </div>
-              </td>
-              <td>
-                <code
-                  style={{
-                    fontSize: 12,
-                    background: "var(--off-white)",
-                    padding: "2px 8px",
-                    borderRadius: 6,
-                    fontFamily: "monospace",
-                  }}
-                >
-                  {p.productCode}
-                </code>
-              </td>
-              <td>
-                <strong>${p.price.toFixed(2)}</strong>
-              </td>
-              <td>
-                <span
-                  className={`badge ${p.published ? "badge-published" : "badge-draft"}`}
-                >
-                  {p.published ? "● Publicado" : "○ Borrador"}
-                </span>
-              </td>
-              <td>
-                <div className="table-actions">
-                  <button
-                    className={`btn btn-sm ${p.published ? "btn-secondary" : "btn-success"}`}
-                    onClick={() => onToggle(p.id, p.published)}
-                    title={p.published ? "Ocultar del front" : "Publicar en el front"}
-                    style={{ gap: 4, padding: "6px 12px" }}
-                  >
-                    <IconEye off={p.published} />
-                    {p.published ? "Ocultar" : "Publicar"}
-                  </button>
-                  <button
-                    className="btn btn-sm btn-secondary"
-                    onClick={() => onEdit(p)}
-                    title="Editar producto"
-                    style={{ padding: "6px 10px" }}
-                  >
-                    <IconEdit />
-                  </button>
-                  <button
-                    className="btn btn-sm btn-danger"
-                    onClick={() => onDelete(p.id)}
-                    title="Eliminar producto"
-                    style={{ padding: "6px 10px" }}
-                  >
-                    <IconTrash />
-                  </button>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+              </div>
+            </div>
+            <div className="product-mobile-actions">
+              <button
+                className={`btn btn-sm ${p.published ? "btn-secondary" : "btn-success"}`}
+                onClick={() => onToggle(p.id, p.published)}
+              >
+                <IconEye off={p.published} />
+                {p.published ? "Ocultar" : "Publicar"}
+              </button>
+              <button
+                className="btn btn-sm btn-secondary"
+                onClick={() => onEdit(p)}
+              >
+                <IconEdit />
+                Editar
+              </button>
+              <button
+                className="btn btn-sm btn-danger"
+                onClick={() => onDelete(p.id)}
+              >
+                <IconTrash />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
@@ -740,74 +798,39 @@ export default function AdminDashboardPage() {
       {/* Topbar */}
       <div className="admin-topbar">
         <div className="admin-topbar-inner">
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <div
-              style={{
-                width: 32,
-                height: 32,
-                background: "var(--dark-gray)",
-                borderRadius: 8,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "white",
-                fontWeight: 700,
-                fontSize: 14,
-              }}
-            >
-              W
-            </div>
+          <div className="admin-topbar-brand">
+            <div className="admin-topbar-icon">W</div>
             <span className="admin-topbar-title">Admin — SorpresasWonderStore</span>
           </div>
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <div className="admin-topbar-actions">
             <a
               href="/"
               target="_blank"
               className="btn btn-secondary btn-sm"
               style={{ textDecoration: "none" }}
             >
-              Ver Tienda ↗
+              <span className="admin-topbar-show">Ver Tienda</span><span className="admin-topbar-show-mobile">↗</span>
             </a>
             <button className="btn btn-outline btn-sm" onClick={handleLogout}>
-              Salir
+              <span className="admin-topbar-show">Salir</span><span className="admin-topbar-show-mobile">✕</span>
             </button>
           </div>
         </div>
       </div>
 
       {/* Stats bar */}
-      <div
-        style={{
-          background: "var(--white)",
-          borderBottom: "1px solid var(--light-gray)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1400,
-            margin: "0 auto",
-            padding: "12px 24px",
-            display: "flex",
-            gap: 32,
-          }}
-        >
+      <div className="admin-stats">
+        <div className="admin-stats-inner">
           {[
             { label: "Total Productos", value: products.length },
             { label: "Publicados", value: published },
             { label: "Borradores", value: drafts },
           ].map((stat) => (
             <div key={stat.label}>
-              <div
-                style={{
-                  fontSize: 22,
-                  fontWeight: 700,
-                  color: "var(--dark-gray)",
-                  letterSpacing: -0.5,
-                }}
-              >
+              <div className="admin-stat-value">
                 {loading ? "—" : stat.value}
               </div>
-              <div style={{ fontSize: 12, color: "var(--gray)", fontWeight: 500 }}>
+              <div className="admin-stat-label">
                 {stat.label}
               </div>
             </div>
